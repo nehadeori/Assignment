@@ -1,0 +1,109 @@
+﻿
+@model Assignment.Models.Employeevm
+
+@{
+    ViewBag.Title = "Create";
+}
+   
+
+<center><h2>Employee Registration</h2></center>
+<link href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="col-md-offset-4">
+        <div class="form-horizontal">
+
+            <hr />
+
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                <div class="form-group">
+                  
+                </div>
+                @Html.LabelFor(model => model.Employees.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Employees.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Employees.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Employees.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Employees.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Employees.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Employees.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-md-10">
+                    @Html.EditorFor(model => model.Employees.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Employees.Phone, "", new { @class = "text-danger" })
+                </div>
+          </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Employees.MaritalStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="Checkbox">
+                
+                    @Html.CheckBoxFor(model => model.Employees.MaritalStatus, new { htmlAttributes = new { @class = "form-control" } }):Married
+                    @Html.ValidationMessageFor(model => model.Employees.MaritalStatus, "", new { @class = "text-danger" })
+                </div>
+                
+                <div class="Checkbox">
+                 
+                @Html.CheckBoxFor(model => model.Employees.MaritalStatus, new { htmlAttributes = new { @class = "form-control" } }):Unmarried
+                @Html.ValidationMessageFor(model => model.Employees.MaritalStatus, "", new { @class = "text-danger" })
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Employees.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Employees.State, new SelectList(Model.States, "StateId", "StateName"), "select", new { @class = "form-control"})
+
+                @Html.ValidationMessageFor(m => m.Employees.State)
+            </div>
+             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Employees.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Employees.City, new SelectList(Model.Cities, "CityId", "CityName"), "select", new { @class = "form-control", @id = "cityDropDown" })
+                @Html.ValidationMessageFor(m => m.Employees.City)
+            </div>
+            </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 ">
+
+                    <button type="submit" class="btn btn-success ">
+                       Add Employee
+                    </button>
+                    <button type="reset" class="btn btn-success ">
+                        Reset
+                    </button>
+
+
+                </div>
+            </div>
+    
+    </div>
+
+}
+
+
+
+
